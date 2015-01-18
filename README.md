@@ -1,5 +1,5 @@
 # docker-tikaserver
-This repos contains the Dockerfile to create a docker image that contains the latest Ubuntu running copy of Apache Tika 1.7 Server on Port 9998 using Java 7.
+This repo contains the Dockerfile to create a docker image that contains the latest Ubuntu running the Apache Tika 1.7 Server on Port 9998 using Java 7.
 
 ## Usage
 
