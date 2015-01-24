@@ -12,16 +12,24 @@ To install more languages simply update the apt-get command to include the packa
 
 ## Usage
 
-To run the container, execute the following command:
+First you need to pull down the build from Dockerhub, which can be done by invoking:
 
-    docker run -d -p 9998:9998 docker-tikaserver
+    docker pull logicalspark/docker-tikaserver
+
+Then to run the container, execute the following command:
+
+    docker run -d -p 9998:9998 logicalspark/docker-tikaserver
 
 ## Building
 
-To build the image, simply invoke
+To build the image from scratch, simply invoke:
 
     docker build -t 'docker-tikaserver' github.com/LogicalSpark/docker-tikaserver
+   
+You can then use the following command (using the name you allocated in the build command as part of -t option):
 
+    docker run -d -p 9998:9998 docker-tikaserver
+    
 ## More
 
 For more info on Apache Tika Server, go to the [Apache Tika Server documentation](http://wiki.apache.org/tika/TikaJAXRS).
