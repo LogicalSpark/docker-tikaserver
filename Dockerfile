@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 MAINTAINER david@logicalspark.com
 
-ENV TIKA_VERSION 1.11
+ENV TIKA_VERSION 1.12
 ENV TIKA_SERVER_URL https://www.apache.org/dist/tika/tika-server-$TIKA_VERSION.jar
 
 RUN	apt-get update \
