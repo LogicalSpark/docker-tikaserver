@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -29,9 +29,9 @@
       </header>
       <section>
         <h1>
-<a id="docker-tikaserver" class="anchor" href="#docker-tikaserver" aria-hidden="true"><span class="octicon octicon-link"></span></a>docker-tikaserver</h1>
+<a id="docker-tikaserver" class="anchor" href="#docker-tikaserver" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>docker-tikaserver</h1>
 
-<p>This repo contains the Dockerfile to create a docker image that contains the latest Ubuntu running the Apache Tika 1.11 Server on Port 9998 using Java 7.</p>
+<p>This repo contains the Dockerfile to create a docker image that contains the latest Ubuntu running the Apache Tika 1.12 Server on Port 9998 using Java 7.</p>
 
 <p>Out-of-the-box the container also includes dependencies for the GDAL and Tesseract OCR parsers.  To balance showing functionality versus the size of the image, this file currently installs the language packs for the following languages:</p>
 
@@ -46,7 +46,7 @@
 <p>To install more languages simply update the apt-get command to include the package containing the language you required, or include your own custom packs using an ADD command.</p>
 
 <h2>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
 
 <p>First you need to pull down the build from Dockerhub, which can be done by invoking:</p>
 
@@ -59,7 +59,7 @@
 </code></pre>
 
 <h2>
-<a id="building" class="anchor" href="#building" aria-hidden="true"><span class="octicon octicon-link"></span></a>Building</h2>
+<a id="building" class="anchor" href="#building" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Building</h2>
 
 <p>To build the image from scratch, simply invoke:</p>
 
@@ -72,21 +72,21 @@
 </code></pre>
 
 <h2>
-<a id="more" class="anchor" href="#more" aria-hidden="true"><span class="octicon octicon-link"></span></a>More</h2>
+<a id="more" class="anchor" href="#more" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>More</h2>
 
 <p>For more info on Apache Tika Server, go to the <a href="http://wiki.apache.org/tika/TikaJAXRS">Apache Tika Server documentation</a>.</p>
 
 <h2>
-<a id="author" class="anchor" href="#author" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author</h2>
+<a id="author" class="anchor" href="#author" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Author</h2>
 
 <ul>
 <li>David Meikle (<a href="mailto:david@logicalspark.com">david@logicalspark.com</a>)</li>
 </ul>
 
 <h2>
-<a id="licence" class="anchor" href="#licence" aria-hidden="true"><span class="octicon octicon-link"></span></a>Licence</h2>
+<a id="licence" class="anchor" href="#licence" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Licence</h2>
 
-<p>Copyright 2015 David Meikle</p>
+<p>Copyright 2015-2016 David Meikle</p>
 
 <p>Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
