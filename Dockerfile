@@ -7,7 +7,7 @@ ENV TIKA_SERVER_URL https://www.apache.org/dist/tika/tika-server-$TIKA_VERSION.j
 RUN	apt-get update \
 	&& apt-get install openjdk-8-jre-headless curl gdal-bin tesseract-ocr \
 		tesseract-ocr-eng tesseract-ocr-ita tesseract-ocr-fra tesseract-ocr-spa tesseract-ocr-deu -y \
-	&& curl -sSL https://people.apache.org/keys/group/tika.asc -o /tmp/tika.asc \
+	&& curl -sSL https://raw.githubusercontent.com/apache/tika/master/KEYS -o /tmp/tika.asc \
 	&& gpg --import /tmp/tika.asc \
 	&& curl -sSL "$TIKA_SERVER_URL.asc" -o /tmp/tika-server-${TIKA_VERSION}.jar.asc \
 	&& NEAREST_TIKA_SERVER_URL=$(curl -sSL http://www.apache.org/dyn/closer.cgi/${TIKA_SERVER_URL#https://www.apache.org/dist/}\?asjson\=1 \
