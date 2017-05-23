@@ -10,6 +10,16 @@ Out-of-the-box the container also includes dependencies for the GDAL and Tessera
 
 To install more languages simply update the apt-get command to include the package containing the language you required, or include your own custom packs using an ADD command.
 
+## Usage
+
+First you need to pull down the build from Dockerhub, which can be done by invoking:
+
+    docker pull logicalspark/docker-tikaserver:1.15rc1
+
+Then to run the container, execute the following command:
+
+    docker run -d -p 9998:9998 logicalspark/docker-tikaserver:1.15rc1
+
 ## Building
 
 To build the image from scratch, simply invoke:
