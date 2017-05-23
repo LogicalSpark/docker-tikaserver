@@ -14,11 +14,11 @@ To install more languages simply update the apt-get command to include the packa
 
 To build the image from scratch, simply invoke:
 
-    docker build -t 'docker-tikaserver' github.com/LogicalSpark/docker-tikaserver
+    docker build -t 'docker-tikaserver-1.15rc1' github.com/LogicalSpark/docker-tikaserver
    
 You can then use the following command (using the name you allocated in the build command as part of -t option):
 
-    docker run -d -p 9998:9998 docker-tikaserver
+    docker run -d -p 9998:9998 docker-tikaserver-1.15rc1
     
 ## More
 
