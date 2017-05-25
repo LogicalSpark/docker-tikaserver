@@ -1,5 +1,5 @@
 # docker-tikaserver
-This repo contains the Dockerfile to create a docker image that contains the latest Ubuntu running the latest Apache Tika 1.15r1 Server on Port 9998 using Java 8.
+This repo contains the Dockerfile to create a docker image that contains the latest Ubuntu running the latest Apache Tika 1.15rc2 Server on Port 9998 using Java 8.
 
 Out-of-the-box the container also includes dependencies for the GDAL and Tesseract OCR parsers.  To balance showing functionality versus the size of the image, this file currently installs the language packs for the following languages:
 * English
@@ -14,21 +14,21 @@ To install more languages simply update the apt-get command to include the packa
 
 First you need to pull down the build from Dockerhub, which can be done by invoking:
 
-    docker pull logicalspark/docker-tikaserver:1.15rc1
+    docker pull logicalspark/docker-tikaserver:1.15rc2
 
 Then to run the container, execute the following command:
 
-    docker run -d -p 9998:9998 logicalspark/docker-tikaserver:1.15rc1
+    docker run -d -p 9998:9998 logicalspark/docker-tikaserver:1.15rc2
 
 ## Building
 
 To build the image from scratch, simply invoke:
 
-    docker build -t 'docker-tikaserver-1.15rc1' github.com/LogicalSpark/docker-tikaserver
+    docker build -t 'docker-tikaserver-1.15rc2' github.com/LogicalSpark/docker-tikaserver:1.15rc2
    
 You can then use the following command (using the name you allocated in the build command as part of -t option):
 
-    docker run -d -p 9998:9998 docker-tikaserver-1.15rc1
+    docker run -d -p 9998:9998 docker-tikaserver-1.15rc2
     
 ## More
 
