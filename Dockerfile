@@ -9,12 +9,12 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu/ xenial multiverse" > /etc/apt/so
   && echo "deb http://archive.ubuntu.com/ubuntu/ xenial-security multiverse" >> /etc/apt/sources.list.d/multiverse.list
 
 RUN	apt-get update \
-  && apt-get install apt-transport-https wget -y \
+  && apt-get install apt-transport-https wget curl -y \
   && curl http://http.us.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb \
   -o /tmp/ttf-mscorefonts-installer_3.6_all.deb \
   && dpkg -i /tmp/ttf-mscorefonts-installer_3.6_all.deb \
   && apt-get install fonts-freefont-ttf fonts-liberation -y \
-	&& apt-get install openjdk-8-jre-headless curl gdal-bin tesseract-ocr \
+	&& apt-get install openjdk-8-jre-headless gdal-bin tesseract-ocr \
 		tesseract-ocr-eng tesseract-ocr-ita tesseract-ocr-fra tesseract-ocr-spa tesseract-ocr-deu -y \
 	&& curl -sSL https://people.apache.org/keys/group/tika.asc -o /tmp/tika.asc \
 	&& gpg --import /tmp/tika.asc \
