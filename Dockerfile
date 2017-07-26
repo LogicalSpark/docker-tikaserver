@@ -4,6 +4,10 @@ MAINTAINER david@logicalspark.com
 ENV TIKA_VERSION 1.16
 ENV TIKA_SERVER_URL https://www.apache.org/dist/tika/tika-server-$TIKA_VERSION.jar
 
+RUN echo "deb http://archive.ubuntu.com/ubuntu/ xenial multiverse" > /etc/apt/sources.list.d/multiverse.list \
+  && echo "deb http://archive.ubuntu.com/ubuntu/ xenial-updates multiverse" >> /etc/apt/sources.list.d/multiverse.list \
+  && echo "deb http://archive.ubuntu.com/ubuntu/ xenial-security multiverse" >> /etc/apt/sources.list.d/multiverse.list
+
 RUN	apt-get update \
   && apt-get install ttf-mscorefonts-installer fonts-freefont-ttf fonts-liberation -y \
 	&& apt-get install openjdk-8-jre-headless curl gdal-bin tesseract-ocr \
