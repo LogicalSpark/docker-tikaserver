@@ -20,7 +20,7 @@ This is a fork of the [docker-tikaserver](https://github.com/LogicalSpark/docker
 
 `--env`, `-e` - Set environment variables
 
-`--interactive`, -i` - Keep STDIN open even if not attached
+`--interactive`, `-i` - Keep STDIN open even if not attached
 
 `--tty`, `-t` - Allocate a pseudo-TTY (pseudo terminal)
 
