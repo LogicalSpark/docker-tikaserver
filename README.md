@@ -14,15 +14,15 @@ This is a fork of the [docker-tikaserver](https://github.com/LogicalSpark/docker
 `--tag`, `-t` - tag the image (syntax: `name:version`)
 
 ### First time run of image inside container
-`docker run -e HEROKU_PRIVATE_IP=0.0.0.0 -e PRIVATE_PORT=9998 -i -t -p 9998:9998 --name content-processor tika-server:latest`
+`docker run -e HEROKU_PRIVATE_IP=0.0.0.0 -e PRIVATE_PORT=9998 -e NEW_RELIC_ENABLED=false -i -t -p 9998:9998 --name content-processor tika-server:latest`
 
 **Attributes:**
 
 [Run command options](https://docs.docker.com/edge/engine/reference/commandline/run/#options)
 
 `--env`, `-e` - Set environment variables
-   * `HEROKU_PRIVATE_IP` - Heroku private IP of the dyno (used for [DNS Service discovery](https://devcenter.heroku.com/articles/dyno-dns-service-discovery))
-   * `PRIVATE_PORT` - Private port to bind too. Needs to be between `1024` and `65535`
+ * `HEROKU_PRIVATE_IP` - Heroku private IP of the dyno (used for [DNS Service discovery](https://devcenter.heroku.com/articles/dyno-dns-service-discovery))
+ * `PRIVATE_PORT` - Private port to bind too. Needs to be between `1024` and `65535`
 
 `--interactive`, `-i` - Keep STDIN open even if not attached
 

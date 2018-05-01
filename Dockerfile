@@ -20,14 +20,9 @@ RUN	apt-get update \
 	&& curl -sSL "$NEAREST_TIKA_SERVER_URL" -o /tika-server-${TIKA_VERSION}.jar \
 	&& apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Download New Relic jar
-RUN echo "Downloading Newrelic jar" \
-    && curl -sSL "$NEW_RELIC_URL" -o /newrelic.jar
-
 # Run the image as a non-root user (mimic Heroku runtime)
 RUN useradd -m myuser
 USER myuser
 
-# Run the app.  CMD is required to run on Heroku
-# $PORT is set by Heroku
-CMD java -javaagent:/newrelic.jar -jar /tika-server-${TIKA_VERSION}.jar -h $HEROKU_PRIVATE_IP -p $PRIVATE_PORT
+# Run the app. CMD is required to run on Heroku. https://github.com/apache/tika/tree/master/tika-server
+CMD java -jar /tika-server-${TIKA_VERSION}.jar -h $HEROKU_PRIVATE_IP -p $PRIVATE_PORT -l debug -s
