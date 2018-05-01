@@ -30,4 +30,4 @@ USER myuser
 
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku
-CMD java -javaagent: /newrelic.jar -jar /tika-server-${TIKA_VERSION}.jar -h $HEROKU_PRIVATE_IP -p $PRIVATE_PORT
+CMD java -javaagent:/newrelic.jar -jar /tika-server-${TIKA_VERSION}.jar -h $HEROKU_PRIVATE_IP -p $PRIVATE_PORT
