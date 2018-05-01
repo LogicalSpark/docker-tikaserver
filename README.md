@@ -14,7 +14,7 @@ This is a fork of the [docker-tikaserver](https://github.com/LogicalSpark/docker
 `--tag`, `-t` - tag the image (syntax: `name:version`)
 
 ### Run Image in Container
-`docker run -e PORT=9998 -i -t -p 9998:9998 --name content-processor tika-server:latest`
+`docker run -e PRIVATE_PORT=9998 -i -t -p 9998:9998 --name content-processor tika-server:latest`
 
 **Attributes:**
 

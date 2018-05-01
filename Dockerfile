@@ -25,4 +25,4 @@ USER myuser
 
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku
-CMD java -jar /tika-server-${TIKA_VERSION}.jar -h 0.0.0.0 -p $PORT
+CMD java -jar /tika-server-${TIKA_VERSION}.jar -h 0.0.0.0 -p $PRIVATE_PORT
