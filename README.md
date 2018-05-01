@@ -13,8 +13,8 @@ This is a fork of the [docker-tikaserver](https://github.com/LogicalSpark/docker
 
 `--tag`, `-t` - tag the image (syntax: `name:version`)
 
-### Run Image
-`docker run -e PORT=9998 -i -t -p 9998:9998 tika-server:latest`
+### Run Image in Container
+`docker run -e PORT=9998 -i -t -p 9998:9998 --name content-processor tika-server:latest`
 
 **Attributes:**
 
@@ -24,7 +24,19 @@ This is a fork of the [docker-tikaserver](https://github.com/LogicalSpark/docker
 
 `--tty`, `-t` - Allocate a pseudo-TTY (pseudo terminal)
 
-*note: need this to shut down server in with CMD+C if running in attached mode. to run in attached mode add the `--detach` or `-d` attrubute.
+`--name` - give name to container
+
+***Note:** To run in attached mode add the `--detach` or `-d` attrubute.
+
+### Stop Container
+
+If running in deatached mode:
+
+`docker stop content-processor`
+
+otherwise:
+
+`CMD+C` or `CTRL+C`
 
 ### Reference
 
