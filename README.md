@@ -66,3 +66,11 @@ Everytime an image is built, and rebuild. The old image lingers around. Clean th
 
 
 ## Deploy to Heroku
+
+Login into Heroku Docker Registry:
+`heroku container:login`
+
+Make sure `PRIVATE_PORT` is set on the app (9998). `HEROKU_PRIVATE_IP` is set by Heroku. No need to set
+
+Push local build to Heroku
+`heroku container:push processor` -a \[appName\]
