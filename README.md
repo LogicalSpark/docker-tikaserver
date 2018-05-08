@@ -14,7 +14,7 @@ This is a fork of the [docker-tikaserver](https://github.com/LogicalSpark/docker
 `--tag`, `-t` - tag the image (syntax: `name:version`)
 
 ### First time run of image inside container
-`docker run -e HEROKU_PRIVATE_IP=0.0.0.0 -e PRIVATE_PORT=9998 -i -t -p 9998:9998 --name content-processor tika-server:latest`
+`docker run -e HEROKU_PRIVATE_IP=0.0.0.0 -e PRIVATE_PORT=9998 -i -t -p 9998:9998 --name content-parser tika-server:latest`
 
 **Attributes:**
 
@@ -38,7 +38,7 @@ This is a fork of the [docker-tikaserver](https://github.com/LogicalSpark/docker
 
 delete docker container:
 
-`docker rm content-processor`
+`docker rm content-parser`
 
 build image from the command above and do the initial run command.
 
@@ -46,13 +46,13 @@ build image from the command above and do the initial run command.
 
 Subsequent starts:
 
-`docker start content-processor`
+`docker start content-parser`
 
 ### Stop Container
 
 If running in deatached mode:
 
-`docker stop content-processor`
+`docker stop content-parser`
 
 otherwise:
 
