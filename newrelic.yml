@@ -1,0 +1,15 @@
+#
+# This file configures the New Relic Agent.
+#
+# See the docs for more information:
+# https://docs.newrelic.com/docs/agents/java-agent/configuration/java-agent-configuration-config-file
+#
+common: &default_settings
+  # license_key: <value provided via NEW_RELIC_LICENSE_KEY environment variable>
+ 
+  # Defaulted to "facade-local" for local development. Overridden in Heroku using
+  # NEW_RELIC_APP_NAME environment variable.
+  app_name: content-parser-local
+
+  # Require SSL and do not collect request parameters.
+  high_security: true
