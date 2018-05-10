@@ -1,55 +1,76 @@
-# docker-tikaserver
-This repo contains the Dockerfile to create a docker image that contains the latest Ubuntu running the Apache Tika 1.18 Server on Port 9998 using Java 8.
+# Content Processor
 
-Out-of-the-box the container also includes dependencies for the GDAL and Tesseract OCR parsers.  To balance showing functionality versus the size of the image, this file currently installs the language packs for the following languages:
-* English
-* French
-* German
-* Italian
-* Spanish.
+This is a fork of the [docker-tikaserver](https://github.com/LogicalSpark/docker-tikaserver/tree/1.18) repo with slight modifications to run in Heroku. Reference [documentation](https://devcenter.heroku.com/articles/container-registry-and-runtime) to see limitations of drunning a docker image in Heroku.
+ * Run with non root user
+ * CMD instead of entrypoint
 
-To install more languages simply update the apt-get command to include the package containing the language you required, or include your own custom packs using an ADD command.
+## Local Usage
 
-## Usage
+### Build Image
+`docker build -t tika-server:latest .`
 
-First you need to pull down the build from Dockerhub, which can be done by invoking:
+**Attributes:**
 
-    docker pull logicalspark/docker-tikaserver
+`--tag`, `-t` - tag the image (syntax: `name:version`)
 
-Then to run the container, execute the following command:
+### First time run of image inside container
+`docker run -e HEROKU_PRIVATE_IP=0.0.0.0 -e PRIVATE_PORT=9998 -i -t -p 9998:9998 --name content-parser tika-server:latest`
 
-    docker run -d -p 9998:9998 logicalspark/docker-tikaserver
+**Attributes:**
 
-## Building
+[Run command options](https://docs.docker.com/edge/engine/reference/commandline/run/#options)
 
-To build the image from scratch, simply invoke:
+`--env`, `-e` - Set environment variables
+ * `HEROKU_PRIVATE_IP` - Heroku private IP of the dyno (used for [DNS Service discovery](https://devcenter.heroku.com/articles/dyno-dns-service-discovery))
+ * `PRIVATE_PORT` - Private port to bind too. Needs to be between `1024` and `65535`
 
-    docker build -t 'docker-tikaserver' github.com/LogicalSpark/docker-tikaserver
-   
-You can then use the following command (using the name you allocated in the build command as part of -t option):
+`--interactive`, `-i` - Keep STDIN open even if not attached
 
-    docker run -d -p 9998:9998 docker-tikaserver
-    
-## More
+`--tty`, `-t` - Allocate a pseudo-TTY (pseudo terminal)
 
-For more info on Apache Tika Server, go to the [Apache Tika Server documentation](http://wiki.apache.org/tika/TikaJAXRS).
+`--port`, `-p` - Port to publush to your host machine. Needs to match `PRIVATE_PORT` env var.
 
-## Author
+`--name` - give name to container
 
-  * David Meikle (<david@logicalspark.com>)
+***Note:** To run in attached mode add the `--detach` or `-d` attrubute.
 
-## Licence
+### Rebuild image
 
-   Copyright 2015-2018 David Meikle
+delete docker container:
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
+`docker rm content-parser`
 
-       http://www.apache.org/licenses/LICENSE-2.0
+build image from the command above and do the initial run command.
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+### Start Container
+
+Subsequent starts:
+
+`docker start content-parser`
+
+### Stop Container
+
+If running in deatached mode:
+
+`docker stop content-parser`
+
+otherwise:
+
+`CMD+C` or `CTRL+C`
+
+### Clean up local Images
+
+Everytime an image is built, and rebuild. The old image lingers around. Clean them by:
+
+`docker image prune`
+
+
+## Deploy to Heroku
+
+Login into Heroku Docker Registry:
+`heroku container:login`
+
+Make sure `PRIVATE_PORT` is set on the app (9998). `HEROKU_PRIVATE_IP` is set by Heroku. No need to set
+
+Push local build to Heroku
+`heroku container:push processor` -a \[appName\]

@@ -1,0 +1,45 @@
+plugins {
+    id 'org.springframework.boot' version '2.0.2.RELEASE'
+    id "io.spring.dependency-management" version "1.0.5.RELEASE"
+}
+
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    newRelic
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-webflux'
+    compile 'org.springframework.boot:spring-boot-starter-reactor-netty'
+    compile 'org.springframework.boot:spring-boot-starter-json'
+    compile 'org.reactivestreams:reactive-streams:latest.release'
+    compile 'org.apache.tika:tika-parsers:latest.release'
+
+    compile 'com.newrelic.agent.java:newrelic-api:latest.release'
+
+    newRelic 'com.newrelic.agent.java:newrelic-agent:latest.release'
+}
+
+task stage(type: Copy, dependsOn: [bootJar, configurations.newRelic]) {
+    from(configurations.newRelic) {
+        rename { name ->
+            def artifacts = configurations.newRelic.resolvedConfiguration.resolvedArtifacts
+            def artifact = artifacts.find { it.file.name == name }
+            "${artifact.name}.${artifact.extension}"
+        }
+
+        into "newrelic"
+    }
+
+    from(file("${projectDir}/newrelic.yml")) {
+        into "newrelic"
+    }
+
+    into "${buildDir}/dist"
+}
+
