@@ -14,7 +14,7 @@ RUN	apt-get update \
 		| awk '/"path_info": / { pi=$2; }; /"preferred":/ { pref=$2; }; END { print pref " " pi; };' \
 		| sed -r -e 's/^"//; s/",$//; s/" "//') \
 	&& echo "Nearest mirror: $NEAREST_TIKA_SERVER_URL" \
-	&& curl -sSL "$NEAREST_TIKA_SERVER_URL" -o /tika-server-${TIKA_VERSION}.jar \
+	&& curl --fail -sSL "$NEAREST_TIKA_SERVER_URL" -o /tika-server-${TIKA_VERSION}.jar \
 	&& apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 EXPOSE 9998
