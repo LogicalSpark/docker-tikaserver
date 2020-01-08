@@ -26,21 +26,23 @@ To build the image from scratch, simply invoke:
 
     docker build -t 'docker-tikaserver' github.com/LogicalSpark/docker-tikaserver
    
+If you want to build a particular version, add `--build-arg TIKA_VERSION=x.y` to that command.
+
 You can then use the following command (using the name you allocated in the build command as part of -t option):
 
     docker run -d -p 9998:9998 docker-tikaserver
-    
+
 ## More
 
 For more info on Apache Tika Server, go to the [Apache Tika Server documentation](http://wiki.apache.org/tika/TikaJAXRS).
 
 ## Author
 
-  * David Meikle (<david@logicalspark.com>)
+  * David Meikle (<david@logicalspark.com>) and [contributors](https://github.com/LogicalSpark/docker-tikaserver/graphs/contributors)
 
 ## Licence
 
-   Copyright 2015-2018 David Meikle
+   Copyright 2015-2020 David Meikle
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
