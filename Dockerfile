@@ -18,7 +18,7 @@ FROM runtime_deps as fetch_tika
 
 ARG TIKA_VERSION
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install gnupg curl jq \
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install gnupg2 curl jq \
     && curl -sSL https://www.apache.org/dist/tika/KEYS | gpg --import \
     && curl -sSL https://www.apache.org/dist/tika/tika-server-${TIKA_VERSION}.jar.asc -o /tika-server-${TIKA_VERSION}.jar.asc \
     && NEAREST_TIKA_SERVER_URL=$(curl --fail -sSL https://www.apache.org/dyn/closer.cgi/tika/tika-server-${TIKA_VERSION}.jar?asjson=1 | jq --raw-output '.preferred + .path_info') \
