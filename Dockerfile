@@ -35,6 +35,3 @@ COPY --from=fetch_tika /tika-server-${TIKA_VERSION}.jar /tika-server-${TIKA_VERS
 
 EXPOSE 9998
 ENTRYPOINT java -jar /tika-server-${TIKA_VERSION}.jar -h 0.0.0.0
-
-EXPOSE 9998
-ENTRYPOINT java -jar /tika-server-${TIKA_VERSION}.jar -h 0.0.0.0
