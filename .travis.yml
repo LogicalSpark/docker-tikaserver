@@ -1,0 +1,9 @@
+language: bash
+services: docker
+script:
+  - docker build -t logicalspark/docker-tikaserver - < Dockerfile
+  - docker run -d --name "test" -p 9998:9998 logicalspark/docker-tikaserver
+  - sleep 10
+  - curl http://localhost:9998/version
+  - docker kill test
+  - docker rm test
