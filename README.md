@@ -45,6 +45,7 @@ There have been a range of [contributors](https://github.com/LogicalSpark/docker
 - [@grossws](https://github.com/grossws)
 - [@arjunyel](https://github.com/arjunyel)
 - [@mpdude](https://github.com/mpdude)
+- [@laszlocsontosuw](https://github.com/laszlocsontosuw)
 
 ## Licence
 
