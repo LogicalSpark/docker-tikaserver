@@ -21,7 +21,7 @@ ENV NEAREST_TIKA_SERVER_URL="https://www.apache.org/dyn/closer.cgi/tika/tika-ser
     TIKA_VERSION=$TIKA_VERSION
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install gnupg2 \
-    && wget -t 10 --max-redirect 1 --retry-connrefused -qO- https://downloads.apache.org/tika/tika/KEYS | gpg --import \
+    && wget -t 10 --max-redirect 1 --retry-connrefused -qO- https://downloads.apache.org/tika/KEYS | gpg --import \
     && wget -t 10 --max-redirect 1 --retry-connrefused $NEAREST_TIKA_SERVER_URL -O /tika-server-${TIKA_VERSION}.jar || rm /tika-server-${TIKA_VERSION}.jar \
     && sh -c "[ -f /tika-server-${TIKA_VERSION}.jar ]" || wget $ARCHIVE_TIKA_SERVER_URL -O /tika-server-${TIKA_VERSION}.jar || rm /tika-server-${TIKA_VERSION}.jar \
     && sh -c "[ -f /tika-server-${TIKA_VERSION}.jar ]" || exit 1 \
