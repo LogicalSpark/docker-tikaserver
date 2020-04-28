@@ -1,7 +1,7 @@
 FROM ubuntu:bionic as base
 RUN apt-get update
 
-ENV TIKA_VERSION 1.24
+ENV TIKA_VERSION 1.24.1
 MAINTAINER david@logicalspark.com
 
 FROM base as dependencies
