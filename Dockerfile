@@ -31,7 +31,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install gnupg2 \
     && gpg --verify /tika-server-${TIKA_VERSION}.jar.asc /tika-server-${TIKA_VERSION}.jar
 
 FROM dependencies as runtime
-RUN apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get -y install curl && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ENV TIKA_VERSION=$TIKA_VERSION
 COPY --from=fetch_tika /tika-server-${TIKA_VERSION}.jar /tika-server-${TIKA_VERSION}.jar
 
