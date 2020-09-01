@@ -7,7 +7,7 @@ MAINTAINER david@logicalspark.com
 FROM base as dependencies
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install openjdk-14-jre-headless gdal-bin tesseract-ocr \
-        tesseract-ocr-eng tesseract-ocr-ita tesseract-ocr-fra tesseract-ocr-spa tesseract-ocr-deu
+        tesseract-ocr-eng tesseract-ocr-ita tesseract-ocr-fra tesseract-ocr-spa tesseract-ocr-deu curl
 
 RUN echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y xfonts-utils fonts-freefont-ttf fonts-liberation ttf-mscorefonts-installer wget cabextract
@@ -31,7 +31,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install gnupg2 \
     && gpg --verify /tika-server-${TIKA_VERSION}.jar.asc /tika-server-${TIKA_VERSION}.jar
 
 FROM dependencies as runtime
-RUN apt-get -y install curl && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ENV TIKA_VERSION=$TIKA_VERSION
 COPY --from=fetch_tika /tika-server-${TIKA_VERSION}.jar /tika-server-${TIKA_VERSION}.jar
 
