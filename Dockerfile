@@ -1,7 +1,7 @@
 FROM ubuntu:focal as base
 RUN apt-get update
 
-ENV TIKA_VERSION 1.25
+ENV TIKA_VERSION 1.26
 MAINTAINER david@logicalspark.com
 
 FROM base as dependencies
