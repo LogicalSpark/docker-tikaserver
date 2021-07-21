@@ -1,5 +1,5 @@
 # docker-tikaserver [![Build Status](https://travis-ci.org/LogicalSpark/docker-tikaserver.svg?branch=master)](https://travis-ci.org/LogicalSpark/docker-tikaserver)
-This repo contains the Dockerfile to create a docker image that contains the latest Ubuntu running the Apache Tika 1.27 Server on Port 9998 using Java 14.
+This repo contains the Dockerfile to create a docker image that contains the latest Ubuntu running the Apache Tika 2.0.0 Server on Port 9998 using Java 14.
 
 Out-of-the-box the container also includes dependencies for the GDAL and Tesseract OCR parsers.  To balance showing functionality versus the size of the image, this file currently installs the language packs for the following languages:
 * English
