@@ -1,13 +1,10 @@
 FROM ubuntu:focal as base
 RUN apt-get update
 
-ENV TIKA_VERSION 1.27
+ENV TIKA_VERSION 1.28
 ENV TIKA_SERVER_JAR tika-server
 
 MAINTAINER david@logicalspark.com
-
-# "random" uid/gid hopefully not used anywhere else
-ARG UID_GID="35002:35002"
 
 FROM base as dependencies
 
@@ -44,6 +41,8 @@ RUN apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ENV TIKA_VERSION=$TIKA_VERSION
 COPY --from=fetch_tika /${TIKA_SERVER_JAR}-${TIKA_VERSION}.jar /tika-server-${TIKA_VERSION}.jar
 
+# "random" uid/gid hopefully not used anywhere else
+ARG UID_GID="35002:35002"
 USER $UID_GID
 EXPOSE 9998
 ENTRYPOINT [ "/bin/sh", "-c", "exec java -jar /${TIKA_SERVER_JAR}-${TIKA_VERSION}.jar -h 0.0.0.0 $0 $@"]
