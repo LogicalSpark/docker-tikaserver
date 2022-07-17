@@ -1,7 +1,7 @@
-FROM ubuntu:focal as base
+FROM ubuntu:jammy as base
 RUN apt-get update
 
-ENV TIKA_VERSION 1.28.1
+ENV TIKA_VERSION 1.28.4
 ENV TIKA_SERVER_JAR tika-server
 
 MAINTAINER david@logicalspark.com
